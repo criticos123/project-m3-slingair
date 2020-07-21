@@ -9,6 +9,7 @@ const {
   postReserve,
   handleFlights,
   handleReservePage,
+  postReserveEmail,
 } = require("./handler/handler");
 
 express()
@@ -31,7 +32,8 @@ express()
   .get("/flights/:number", handleSeat)
   .get("/users/:id", handlegetConfirm)
   .post("/users", postReserve)
-  .get("/reservation/:id", handleReservePage)
+  .post("/reservation", postReserveEmail)
+  .get("/reservation/:email", handleReservePage)
 
   .use((req, res) => res.send("Not Found"))
   .listen(8000, () => console.log(`Listening on port 8000`));

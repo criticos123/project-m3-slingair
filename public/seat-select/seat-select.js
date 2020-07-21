@@ -1,4 +1,6 @@
 const flightInput = document.getElementById("flight");
+const buttonEmail = document.getElementById("emailButton");
+const resereveEmail = document.getElementById("Email");
 const seatsDiv = document.getElementById("seats-section");
 const confirmButton = document.getElementById("confirm-button");
 const getName = document.getElementById("givenName");
@@ -58,7 +60,6 @@ const startingContent = (event) => {
     .then((res) => res.json())
     .then((data) => {
       data.flightNumbers.forEach((number) => {
-        console.log(number);
         const optionTags = document.createElement("option");
         optionTags.innerText = number;
         flightInput.appendChild(optionTags);
@@ -80,7 +81,9 @@ const toggleFormContent = (event) => {
 
   // TODO: Pass the response data to renderSeats to create the appropriate seat-type.
 };
-
+const viewReservation = (event) => {
+  window.location.href = `/view-reservation?email=${resereveEmail.value}`;
+};
 const handleConfirmSeat = (event) => {
   event.preventDefault();
   const personInfo = {
